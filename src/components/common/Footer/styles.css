@@ -1,0 +1,23 @@
+.footerContainer{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: white;
+    padding: 10px 20px;
+    border-top: 1px solid #F3F6FA;
+}
+
+
+
+.listFooter{
+    width: 100%;
+    list-style: none;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.textList{
+    color: #001e5c;
+}

@@ -1,0 +1,21 @@
+.iconsContainer {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items: center;
+  width: 15%;
+  font-size: 25px;
+}
+.UserIcons {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  font-size: 25px;
+}
+
+.colorIcons {
+  color: #072461;
+}
+
+

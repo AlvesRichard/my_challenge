@@ -1,0 +1,17 @@
+
+.settingsContainer{
+    display: flex;
+    flex-direction: column;
+    list-style: none;
+    font-size: 14px;
+    position: absolute;
+    top: 6%;
+    right: 2%;
+    border: 1px solid #F3F6FA;
+    border-radius: 8px;
+    padding: 8px;
+    background-color: white;
+}
+.settingsCosa{
+    margin: 5px 0;
+}

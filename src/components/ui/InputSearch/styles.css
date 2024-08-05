@@ -1,0 +1,23 @@
+.inputSearchContainer{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 20%;
+    border: 1px solid #D3D3D3;
+    border-radius: 5px;
+    padding: 10px;
+}
+
+.inputSearch{
+    border: none;
+    width: 90%;
+}
+.inputSearch:focus-visible{
+    outline: none;
+}
+
+.iconSearch{
+    width: 10%;
+    font-size: 20px;
+}
