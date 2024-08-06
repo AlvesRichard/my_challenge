@@ -1,5 +1,9 @@
 "use client";
 import "./styles.css";
+import Image from "next/image";
+import storeApple from "../../../../public/store_apple.png";
+import storeAndroid from "../../../../public/store_android.png";
+
 export default function Footer() {
   return (
     <section className="footerContainer">
@@ -15,8 +19,21 @@ export default function Footer() {
         <p className="textList cursorPointer">Instagram</p>
       </li>
 
-      <div>stores</div>
-      <div>My Challenge © 2024. Todos los derechos reservados.</div>
+      <div className="storeImages">
+        <Image
+          src={storeApple}
+          width={200}
+          alt="Imagen del store de Apple"
+          className="cursorPointer"
+        />
+        <Image
+          src={storeAndroid}
+          width={200}
+          alt="Imagen del store de Android"
+          className="cursorPointer"
+        />
+      </div>
+      <p className="copyrightText">My Challenge © 2024. Todos los derechos reservados.</p>
     </section>
   );
 }

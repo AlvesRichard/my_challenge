@@ -21,3 +21,18 @@
 .textList{
     color: #001e5c;
 }
+
+.storeImages{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 23%;
+    margin: 25px 0;
+}
+
+.copyrightText{
+    text-align: center;
+    font-size: 15px;
+    margin-top: 20px;
+}
