@@ -23,9 +23,6 @@ export default function Front() {
             <strong>20</strong> Publicaciones
           </span>
           <span className="statItem">
-            <strong>150</strong> Me gusta
-          </span>
-          <span className="statItem">
             <strong>300</strong> Seguidores
           </span>
           <span className="statItem">

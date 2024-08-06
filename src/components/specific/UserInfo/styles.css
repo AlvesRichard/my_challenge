@@ -39,3 +39,7 @@ p {
 .infoItem p {
   font-weight: 300;
 }
+
+.descriptionText{
+  text-align: left;
+}

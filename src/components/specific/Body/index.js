@@ -1,12 +1,13 @@
 import UsersPreview from "@/components/common/UsersPreview";
-import PersonalInfo from "../PersonalInfo";
+import UserInfo from "../UserInfo";
 import "./styles.css";
 
 export default function Body() {
   return (
     <section className="bodyContainer">
       <div className="infoContainer">
-        <PersonalInfo />
+        <UserInfo />
+        <UserInfo isPersonalInfo={true}/>
         <UsersPreview title={"Seguidores"}/>
         <UsersPreview title={"Seguidos"}/>
       </div>
