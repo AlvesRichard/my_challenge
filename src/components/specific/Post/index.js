@@ -43,7 +43,7 @@ export default function Post() {
       </div>
       <div className="postActions">
         <div className="postIcons">
-          <FaThumbsUp />
+          <FaThumbsUp /> 
           <FaCommentDots
             onClick={toggleComments}
             style={{ cursor: "pointer" }}

@@ -25,6 +25,7 @@
   width: calc(50% - 10px);
   box-sizing: border-box;
   font-size: 14px;
+  gap:5px;
 }
 
 .infoItem label,

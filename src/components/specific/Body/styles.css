@@ -33,3 +33,10 @@
   color:#001e5d;
   font-weight: 600;
 }
+
+.topPosts{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}

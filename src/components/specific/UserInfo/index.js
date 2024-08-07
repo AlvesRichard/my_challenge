@@ -1,6 +1,6 @@
 import "./styles.css";
 
-export default function UserInfo({ isPersonalInfo }) {
+export default function UserInfo({ isPersonalInfo, userData }) {
   return (
     <div className="personalContainer">
       {isPersonalInfo ? (
@@ -8,39 +8,53 @@ export default function UserInfo({ isPersonalInfo }) {
           <span>Datos personales</span>
           <div className="infoCard">
             <div className="infoItem">
-              <label>Ciudad: </label>
-              <p>Buenos Aires</p>
+              <label>Empresa: </label>
+              <p>{userData.company.name}</p>
             </div>
             <div className="infoItem">
-              <label>Pais: </label>
-              <p>Argentina</p>
+              <label>Slogan: </label>
+              <p>{userData.company.catchPhrase}</p>
+            </div>{" "}
+            <div className="infoItem">
+              <label>Estrategia: </label>
+              <p>{userData.company.bs}</p>
             </div>
             <div className="infoItem">
               <label>Sitio web: </label>
-              <p>www.example.com</p>
+              <p>{userData.website}</p>
             </div>
             <div className="infoItem">
               <label>Email: </label>
-              <p>example@example.com</p>
+              <p>{userData.email}</p>
             </div>
             <div className="infoItem">
-              <label>Pais de nacimiento: </label>
-              <p>Uruguay</p>
-            </div>
-            <div className="infoItem">
-              <label>Ciudad: </label>
-              <p>Buenos Aires</p>
+              <label>Telefono: </label>
+              <p>{userData.phone}</p>
             </div>
             <div className="infoItem">
               <label>Ciudad: </label>
-              <p>Buenos Aires</p>
+              <p>{userData.address.city}</p>
+            </div>
+            <div className="infoItem">
+              <label>Calle: </label>
+              <p>{userData.address.street}</p>
+            </div>
+            <div className="infoItem">
+              <label>Codigo postal: </label>
+              <p>{userData.address.zipcode}</p>
+            </div>
+            <div className="infoItem">
+              <label>Usuario: </label>
+              <p>{userData.username}</p>
             </div>
           </div>
         </>
       ) : (
         <div className="description">
           <span>Sobre mi</span>
-          <p className="descriptionText">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+          <p className="descriptionText">
+            {userData.aboutMe}
+          </p>
         </div>
       )}
     </div>

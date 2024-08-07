@@ -1,12 +1,12 @@
 "use client";
 import UsersPreview from "@/components/common/UsersPreview";
 import UserInfo from "../UserInfo";
-import { FaThumbsUp, FaCommentDots } from "react-icons/fa";
+import { BsPlusSquareFill } from "react-icons/bs";
 import "./styles.css";
 import { useState } from "react";
 import Post from "../Post";
 
-export default function Body() {
+export default function Body({userData}) {
   const [showComments, setShowComments] = useState(false);
   const comments = [
     {
@@ -30,14 +30,21 @@ export default function Body() {
   return (
     <section className="bodyContainer">
       <div className="infoContainer">
-        <UserInfo />
-        <UserInfo isPersonalInfo={true} />
+        <UserInfo userData={userData}/>
+        <UserInfo isPersonalInfo={true} userData={userData}/>
         <UsersPreview title={"Seguidores"} />
         <UsersPreview title={"Seguidos"} />
       </div>
 
       <div className="postsListContainer">
-        <span className="principalTitlePosts">Posts</span>
+        <div className="topPosts">
+          <span className="principalTitlePosts">Publicaciones</span>
+          <BsPlusSquareFill
+            style={{ color: "#8B95EE", fontSize:35 }}
+            className="cursorPointer"
+            title="Nueva publicación"
+          />
+        </div>
         <Post />
         <Post />
       </div>
