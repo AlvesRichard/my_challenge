@@ -13,5 +13,23 @@
   max-width: 50%;
   display: flex;
   flex-direction: column;
+  align-items: center;
   gap:15px;
+}
+
+.postsListContainer {
+  display: flex;
+  flex-direction: column;
+  background-color: white;
+  border-radius: 10px;
+  gap: 15px; 
+  padding: 20px; 
+  max-width: 35%;
+  height: fit-content;
+}
+
+.principalTitlePosts{
+  font-size: 35px;
+  color:#001e5d;
+  font-weight: 600;
 }
