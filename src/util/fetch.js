@@ -14,26 +14,13 @@ let arrayAboutMe = [
   `En Hoeger LLC, me especializo en modelos integrales y empoderadores que optimizan los procesos empresariales. Con el lema "Centralized empowering task-force", nuestro enfoque es ofrecer soluciones completas y eficientes para transformar la forma en que las empresas operan. Estamos comprometidos con la implementación de estrategias innovadoras que mejoren el rendimiento y la coordinación en todos los niveles. Descubre más sobre nuestros servicios en ambrose.net.`,
 ];
 
-const fetchPosts = async (id) => {
-  try {
-    const response = await axios.get(
-      `https://jsonplaceholder.typicode.com/posts?userId=${id}`
-    );
-    return response.data;
-  } catch (e) {
-    console.log(e);
-    return null;
-  }
-};
+
 
 const fetchUsers = async () => {
   try {
     const responseUsers = await axios.get(
       "https://jsonplaceholder.typicode.com/users"
     );
-    // const responsePosts = await axios.get(
-    //   "https://jsonplaceholder.typicode.com/posts"
-    // );
 
     const usersWithAdditionalInfo = responseUsers.data.map((user, index) => {
       return {
@@ -41,7 +28,6 @@ const fetchUsers = async () => {
         photo: require(`../../public/perfiles/${user.id}.jpg`),
         front: require(`../../public/portadas/${user.id}.jpg`),
         aboutMe: arrayAboutMe[index],
-       // posts: responsePosts.data.filter((post) => post.userId === user.id),
       };
     });
 
@@ -85,6 +71,33 @@ function getRandomNumber(min, max) {
   return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 
+const fetchPosts = async (id) => {
+  try {
+    const response = await axios.get(
+      `https://jsonplaceholder.typicode.com/posts?userId=${id}`
+    );
+    return response.data;
+  } catch (e) {
+    console.log(e);
+    return null;
+  }
+};
+
+const fetchComments = async (id) => {
+  try {
+    const response = await axios.get(
+      `https://jsonplaceholder.typicode.com/posts/${id}/comments`
+    );
+    const commentsWithUser = response.data.map(comment=>{
+      return {...comment,userId:getRandomNumber(1, 10)}
+    })
+    return commentsWithUser;
+  } catch (e) {
+    console.log(e);
+    return null;
+  }
+};
+
 module.exports={
-  fetchUsers,fetchPosts
+  fetchUsers,fetchPosts,fetchComments
 }
