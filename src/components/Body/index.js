@@ -7,20 +7,56 @@ import { useEffect, useState } from "react";
 import Post from "../Post";
 import { fetchPosts } from "../../util/fetch";
 import Modal from "../Modal";
+import NewPost from "../NewPost";
+import { useDispatch, useSelector } from "react-redux";
+import { setPosts, addPost } from "@/redux/slices/postsSlice";
 
 export default function Body({ userData }) {
-  const [posts, setPosts] = useState(null);
+  const posts = useSelector((state) => state.posts.posts);
+  const dispatch = useDispatch();
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   useEffect(() => {
-    const fetch = async () => {
-      fetchPosts(userData.id).then((fetchedPosts) => {
-        setPosts(fetchedPosts);
-      });
+    const loadPosts = async () => {
+      const storedUsers = localStorage.getItem("users");
+      const parsedUsers = JSON.parse(storedUsers);
+
+      const userPosts = parsedUsers.find(
+        (user) => parseInt(user.id) === parseInt(userData.id)
+      )?.posts;
+
+      if (userPosts && userPosts.length > 0) {
+        dispatch(setPosts(userPosts));
+      } else {
+        const fetchedPosts = await fetchPosts(userData.id);
+        dispatch(setPosts(fetchedPosts.reverse()));
+      }
     };
 
-    fetch();
-  }, []);
+    loadPosts();
+  }, [dispatch, userData.id]);
+
+  const handleNewPost = (newPost) => {
+    const postUpdated = { id: posts.length + 1, ...newPost };
+    dispatch(addPost(postUpdated));
+    updateLocalStorage(postUpdated);
+    setIsModalOpen(false);
+  };
+
+  const updateLocalStorage = (postUpdated) => {
+    const storedUsers = localStorage.getItem("users");
+    const parsedUsers = JSON.parse(storedUsers);
+
+    const updatedUsers = parsedUsers.map((user) => {
+      if (parseInt(user.id) === parseInt(userData.id)) {
+        return { ...user, posts: [postUpdated, ...posts] };
+      }
+      return user;
+    });
+
+    localStorage.setItem("users", JSON.stringify(updatedUsers));
+  };
+
   return (
     <section className="bodyContainer">
       <div className="infoContainer">
@@ -29,7 +65,6 @@ export default function Body({ userData }) {
         <UsersPreview title={"Seguidores"} users={userData.followers} />
         <UsersPreview title={"Seguidos"} users={userData.followed} />
       </div>
-
       <div className="postsListContainer">
         <div className="topPosts">
           <span className="principalTitlePosts">Publicaciones</span>
@@ -49,7 +84,7 @@ export default function Body({ userData }) {
         )}
       </div>
       <Modal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)}>
-        HOLA
+        <NewPost onSubmit={handleNewPost} />
       </Modal>
     </section>
   );

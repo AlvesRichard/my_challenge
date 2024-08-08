@@ -1,0 +1,27 @@
+.newPostContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+
+.newPostInput {
+  width: 80%;
+  padding: 1%;
+  border: 1px solid grey;
+  border-radius: 5px;
+  font-size: 18px;
+}
+
+.newPostButton{
+    margin-bottom: 1%;
+    margin-left: 1%;
+    background-color: #5c7cea;
+    text-align: center;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5%;
+    color: white;
+    font-weight: 600;
+}

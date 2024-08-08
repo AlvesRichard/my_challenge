@@ -44,6 +44,8 @@ export default function Home() {
   }
 
   return (
+
+
     <main className="appContainer">
       <div className="homeContainer">
         <h1>Ingresa a cualquier perfil de los siguientes usuarios</h1>
@@ -57,7 +59,7 @@ export default function Home() {
                   src={user.photo}
                   width={80}
                   height={80}
-                />
+                  />
                 <span className="cursorPointer">{user.name}</span>
               </Link>
             );
@@ -69,7 +71,7 @@ export default function Home() {
             className={`actionButton cursorPointer ${
               inStorage ? "deleteData" : "getData"
             }`}
-          >
+            >
             {inStorage ? "Eliminar datos" : "Generar datos"}
           </button>
         </div>
