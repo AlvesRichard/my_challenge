@@ -2,12 +2,13 @@
 import InputSearch from "@/components/ui/InputSearch";
 import "./styles.css";
 import IconsHeader from "@/components/specific/IconsHeader";
+import Link from "next/link";
 export default function Header() {
   return (
     <section className="headerContainer">
-      <p className="headerItem cursorPointer">
+      <Link className="headerItem" href={"/"}>
         My <strong>Challenge</strong>
-      </p>
+      </Link>
       <div className="headerItem">
         <InputSearch />
       </div>

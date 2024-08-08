@@ -28,6 +28,7 @@ export default function Post({ post }) {
     });
     setComments(commentWithUser);
   };
+
   return (
     <div className="postContainer">
       <div className="postHeader">
@@ -38,7 +39,6 @@ export default function Post({ post }) {
       </div>
       <div className="postActions">
         <div className="postIcons">
-          <FaThumbsUp />
           <FaCommentDots
             onClick={handleComments}
             style={{ cursor: "pointer" }}

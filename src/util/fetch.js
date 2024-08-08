@@ -99,5 +99,5 @@ const fetchComments = async (id) => {
 };
 
 module.exports={
-  fetchUsers,fetchPosts,fetchComments
+  fetchUsers,fetchPosts,fetchComments,getRandomNumber
 }

@@ -7,6 +7,7 @@ import { FaRegCircle } from "react-icons/fa";
 import { MdKeyboardArrowDown } from "react-icons/md";
 import { useState } from "react";
 import Settings from "../Settings";
+import Link from "next/link";
 
 export default function IconsHeader() {
   const [isActive, setIsActive] = useState(false);
@@ -20,7 +21,9 @@ export default function IconsHeader() {
         className="cursorPointer"
         title="Nueva publicación"
       />
-      <PiHouseLineBold className="colorIcons cursorPointer" title="Ir al inicio"/>
+      <Link className="colorIcons" href={"/"} style={{display:"flex"}}>
+        <PiHouseLineBold  title="Ir al inicio"/>
+      </Link>
       <IoMdNotificationsOutline className="colorIcons cursorPointer" title="Notificaciones" />
       <TiMessage className="colorIcons cursorPointer" title="Casillero de mensajes"/>
       <div className="UserIcons">

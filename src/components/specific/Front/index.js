@@ -1,12 +1,31 @@
 import Image from "next/image";
-import retrato from "../../../../public/retrato.webp";
-import portada from "../../../../public/portadas/1.jpg";
 import "./styles.css";
+import { useEffect, useState } from "react";
 
-export default function Front({userData}) {
+export default function Front({ userData, onFollowToggle }) {
+  const [isFollow, setIsFollow] = useState(false);
+
+  useEffect(() => {
+    const adminUser = userData.followers.some((user) => user.id === "#");
+    setIsFollow(adminUser);
+  }, [userData]);
+
+  const handleClick = () => {
+    setIsFollow(!isFollow);
+    onFollowToggle();
+  };
+
   return (
     <section className="coverContainer">
-      <Image src={userData.front} className="portadaImage" height={240}  />
+      <div className="imageContainer">
+        <Image
+          alt="Portada"
+          src={userData.front}
+          className="portadaImage"
+          layout="fill"
+          objectFit="cover"
+        />
+      </div>
       <div className="profileContent">
         <div className="profilePictureContainer">
           <Image
@@ -14,9 +33,17 @@ export default function Front({userData}) {
             className="profilePicture"
             width={128}
             height={128}
+            alt="Perfil"
           />
           <h1 className="userName">{userData.name}</h1>
-          <button className="followButton">SEGUIR</button>
+          <button
+            className={`followButton cursorPointer ${
+              isFollow ? "unFollowButton" : null
+            }`}
+            onClick={handleClick}
+          >
+            {isFollow ? "DEJAR DE SEGUIR" : "SEGUIR"}
+          </button>
         </div>
         <div className="stats">
           <span className="statItem">

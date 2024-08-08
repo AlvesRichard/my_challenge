@@ -1,6 +1,4 @@
 "use client";
-
-import { FaThumbsUp, FaRegCircle } from "react-icons/fa";
 import "./styles.css";
 import Image from "next/image";
 import Link from "next/link";
@@ -20,9 +18,6 @@ export default function Comment({ comment }) {
       </Link>
       <div className="commentBody">
         <p>{comment.body}</p>
-      </div>
-      <div className="commentAction">
-        <FaThumbsUp />
       </div>
     </div>
   );
