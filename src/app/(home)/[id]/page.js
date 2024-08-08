@@ -1,11 +1,11 @@
 "use client";
 import Front from "@/components/specific/Front";
 import Body from "@/components/specific/Body";
-import Loading from "./loading";
+import Loading from "../../loading";
 import { Suspense, useEffect, useState } from "react";
-import fetch from "../util/fetch";
+import fetch from "../../../util/fetch";
 
-export default function Home() {
+export default function Perfil() {
   const [data, setData] = useState(null);
 
   useEffect(() => {
@@ -21,7 +21,6 @@ export default function Home() {
     return <Loading />;
   }
 
-  console.log("fetch: ", data);
   return (
     <main className="appContainer">
       <Front userData={data[0]} />

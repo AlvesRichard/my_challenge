@@ -27,13 +27,14 @@ export default function Body({userData}) {
   const toggleComments = () => {
     setShowComments(!showComments);
   };
+  console.log(userData)
   return (
     <section className="bodyContainer">
       <div className="infoContainer">
         <UserInfo userData={userData}/>
         <UserInfo isPersonalInfo={true} userData={userData}/>
-        <UsersPreview title={"Seguidores"} />
-        <UsersPreview title={"Seguidos"} />
+        <UsersPreview title={"Seguidores"} users={userData.followers}/>
+        <UsersPreview title={"Seguidos"} users={userData.followed}/>
       </div>
 
       <div className="postsListContainer">
@@ -45,8 +46,9 @@ export default function Body({userData}) {
             title="Nueva publicación"
           />
         </div>
-        <Post />
-        <Post />
+        {userData.posts.map(post=>{
+          return <Post post={post} />
+        })}
       </div>
     </section>
   );

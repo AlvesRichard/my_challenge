@@ -5,7 +5,7 @@ import "./styles.css";
 import { useState } from "react";
 import Comment from "../Comment";
 
-export default function Post() {
+export default function Post({post}) {
   const [showComments, setShowComments] = useState(false);
   const comments = [
     {
@@ -30,15 +30,12 @@ export default function Post() {
     <div className="postContainer">
       <div className="postHeader">
         <span className="postTitle">
-          sunt aut facere repellat provident occaecati excepturi optio
-          reprehenderit
+          {post.title}
         </span>
       </div>
       <div className="postContent">
         <p>
-          quia et suscipit\nsuscipit recusandae consequuntur expedita et
-          cum\nreprehenderit molestiae ut ut quas totam\nnostrum rerum est autem
-          sunt rem eveniet architecto
+          {post.body}
         </p>
       </div>
       <div className="postActions">

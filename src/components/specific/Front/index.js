@@ -23,10 +23,10 @@ export default function Front({userData}) {
             <strong>20</strong> Publicaciones
           </span>
           <span className="statItem">
-            <strong>300</strong> Seguidores
+            <strong>{userData.followers.length}</strong> Seguidores
           </span>
           <span className="statItem">
-            <strong>180</strong> Seguidos
+            <strong>{userData.followed.length}</strong> Seguidos
           </span>
         </div>
       </div>

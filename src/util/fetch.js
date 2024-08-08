@@ -1,8 +1,8 @@
 import axios from "axios";
+import { useEffect, useState } from 'react';
 
 let arrayAboutMe = [
   `Soy Leanne Graham, una apasionada profesional de Romaguera-Crona, donde implemento nuestra estrategia de "harness real-time e-markets" para crear redes neuronales cliente-servidor en múltiples capas. Me dedico a transformar la forma en que los mercados electrónicos funcionan, optimizando cada proyecto para alcanzar la máxima eficiencia. Vivo en la tranquila ciudad de Gwenborough y disfruto aplicando mis conocimientos para resolver desafíos complejos, siempre con un enfoque en la innovación y la mejora continua.`,
-  ,
   `Soy Ervin Howell, y formo parte de Deckow-Crist, una empresa reconocida por su enfoque proactivo en la contingencia didáctica. En mi rol, me dedico a "synergize scalable supply-chains", trabajando para optimizar y escalar nuestras cadenas de suministro de manera eficiente. Resido en la vibrante ciudad de Wisokyburgh, y disfruto aplicando mi experiencia para desarrollar soluciones innovadoras que impulsen el crecimiento y la adaptabilidad en nuestra industria. Estoy comprometido con la excelencia y la mejora continua en cada proyecto que emprendo.`,
   `Hola, soy Clementine Bauch, y trabajo en Romaguera-Jacobson, donde nos destacamos por nuestra interfaz bifurcada cara a cara. Mi enfoque está en "e-enable strategic applications", desarrollando soluciones que faciliten aplicaciones estratégicas en nuestro sector. Vivo en McKenziehaven y me apasiona contribuir al éxito de nuestros proyectos mediante un enfoque innovador y orientado al cliente. Mi compromiso es proporcionar soluciones efectivas y eficientes que impulsen nuestra empresa hacia el futuro.`,
   `Soy Patricia Lebsack en Robel-Corkery, donde lidero iniciativas para mejorar la "multi-tiered zero tolerance productivity". Mi enfoque está en "transitioning cutting-edge web services", asegurando que nuestras soluciones sean siempre innovadoras y de alta calidad. Estoy dedicada a impulsar el éxito mediante la implementación de servicios web avanzados y eficaces. Si buscas transformar tu infraestructura tecnológica, ¡conéctate conmigo!`,
@@ -14,40 +14,72 @@ let arrayAboutMe = [
   `En Hoeger LLC, me especializo en modelos integrales y empoderadores que optimizan los procesos empresariales. Con el lema "Centralized empowering task-force", nuestro enfoque es ofrecer soluciones completas y eficientes para transformar la forma en que las empresas operan. Estamos comprometidos con la implementación de estrategias innovadoras que mejoren el rendimiento y la coordinación en todos los niveles. Descubre más sobre nuestros servicios en ambrose.net.`,
 ];
 
-// const fetchPosts = async () => {
-//     try {
-//       const response = await axios.get("https://jsonplaceholder.typicode.com/posts");
-//       return response.data;
-//     } catch (e) {
-//       console.log(e);
-//       return null;
-//     }
-//   };
-
-const fetchUsers = async () => {
+const fetchPosts = async () => {
   try {
     const response = await axios.get(
-      "https://jsonplaceholder.typicode.com/users"
+      "https://jsonplaceholder.typicode.com/posts"
     );
-    const result = response.data.map((user,i) => {
-      return {
-        ...user,
-        photo: require(`../../public/perfiles/${user.id}.jpg`),
-        front: require(`../../public/portadas/${user.id}.jpg`),
-        aboutMe:arrayAboutMe[i]
-      };
-    });
-    return result;
+    return response.data;
   } catch (e) {
     console.log(e);
     return null;
   }
 };
 
-const makeFollowers = (users)=>{
-let result=[]
-const countFollowers= getRandomNumber(1, 10);
-}
+const fetchUsers = async () => {
+  try {
+    const responseUsers = await axios.get(
+      "https://jsonplaceholder.typicode.com/users"
+    );
+    // const responsePosts = await axios.get(
+    //   "https://jsonplaceholder.typicode.com/posts"
+    // );
+
+    const usersWithAdditionalInfo = responseUsers.data.map((user, index) => {
+      return {
+        ...user,
+        photo: require(`../../public/perfiles/${user.id}.jpg`),
+        front: require(`../../public/portadas/${user.id}.jpg`),
+        aboutMe: arrayAboutMe[index],
+       // posts: responsePosts.data.filter((post) => post.userId === user.id),
+      };
+    });
+
+    const usersWithConnections = usersWithAdditionalInfo.map((user) => {
+      return {
+        ...user,
+        followers: generateConnections(usersWithAdditionalInfo, user.id),
+        followed: generateConnections(usersWithAdditionalInfo, user.id),
+      };
+    });
+
+    return usersWithConnections;
+  } catch (error) {
+    console.log(error);
+    return null;
+  }
+};
+
+const generateConnections = (users, currentUserId) => {
+  let connections = [];
+  let potentialConnectionIds = [];
+  const numberOfConnections = getRandomNumber(1, 10);
+  for (let i = 0; i < numberOfConnections; i++) {
+    potentialConnectionIds.push(getRandomNumber(1, numberOfConnections));
+  }
+  let uniqueConnectionIds = [...new Set(potentialConnectionIds)];
+
+  for (let i = 0; i < uniqueConnectionIds.length; i++) {
+    users.forEach((user) => {
+      if (
+        user.id === uniqueConnectionIds[i] &&
+        uniqueConnectionIds[i] !== currentUserId
+      )
+        connections.push(user);
+    });
+  }
+  return connections;
+};
 
 function getRandomNumber(min, max) {
   return Math.floor(Math.random() * (max - min + 1)) + min;
