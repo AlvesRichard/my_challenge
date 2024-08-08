@@ -1,7 +1,7 @@
 "use client";
-import InputSearch from "@/components/ui/InputSearch";
+import InputSearch from "@/ui/InputSearch";
 import "./styles.css";
-import IconsHeader from "@/components/specific/IconsHeader";
+import IconsHeader from "@/components/IconsHeader";
 import Link from "next/link";
 export default function Header() {
   return (

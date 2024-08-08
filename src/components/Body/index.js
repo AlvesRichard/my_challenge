@@ -1,11 +1,11 @@
 "use client";
-import UsersPreview from "@/components/common/UsersPreview";
+import UsersPreview from "@/components/UsersPreview";
 import UserInfo from "../UserInfo";
 import { BsPlusSquareFill } from "react-icons/bs";
 import "./styles.css";
 import { useEffect, useState } from "react";
 import Post from "../Post";
-import { fetchPosts } from "../../../util/fetch";
+import { fetchPosts } from "../../util/fetch";
 
 export default function Body({ userData }) {
   const [posts, setPosts] = useState(null);

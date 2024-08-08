@@ -1,8 +1,8 @@
 "use client";
 import "./styles.css";
 import Image from "next/image";
-import storeApple from "../../../../public/store_apple.png";
-import storeAndroid from "../../../../public/store_android.png";
+import storeApple from "../../../public/store_apple.png";
+import storeAndroid from "../../../public/store_android.png";
 
 export default function Footer() {
   return (

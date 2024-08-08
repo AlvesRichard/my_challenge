@@ -4,7 +4,7 @@ import { FaThumbsUp, FaCommentDots, FaRegCircle } from "react-icons/fa";
 import "./styles.css";
 import { useState } from "react";
 import Comment from "../Comment";
-import { fetchComments } from "../../../util/fetch";
+import { fetchComments } from "../../util/fetch";
 
 export default function Post({ post }) {
   const [comments, setComments] = useState([]);

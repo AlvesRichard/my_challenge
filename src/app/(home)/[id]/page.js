@@ -1,6 +1,6 @@
 "use client";
-import Front from "@/components/specific/Front";
-import Body from "@/components/specific/Body";
+import Front from "@/components/Front";
+import Body from "@/components/Body";
 import Loading from "../../loading";
 import { useEffect, useState } from "react";
 import { usePathname } from 'next/navigation'
