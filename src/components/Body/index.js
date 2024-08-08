@@ -6,9 +6,11 @@ import "./styles.css";
 import { useEffect, useState } from "react";
 import Post from "../Post";
 import { fetchPosts } from "../../util/fetch";
+import Modal from "../Modal";
 
 export default function Body({ userData }) {
   const [posts, setPosts] = useState(null);
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   useEffect(() => {
     const fetch = async () => {
@@ -33,6 +35,7 @@ export default function Body({ userData }) {
           <span className="principalTitlePosts">Publicaciones</span>
           <BsPlusSquareFill
             style={{ color: "#8B95EE", fontSize: 35 }}
+            onClick={() => setIsModalOpen(true)}
             className="cursorPointer"
             title="Nueva publicación"
           />
@@ -45,6 +48,9 @@ export default function Body({ userData }) {
           <h1>Loading</h1>
         )}
       </div>
+      <Modal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)}>
+        HOLA
+      </Modal>
     </section>
   );
 }
