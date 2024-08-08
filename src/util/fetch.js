@@ -14,10 +14,10 @@ let arrayAboutMe = [
   `En Hoeger LLC, me especializo en modelos integrales y empoderadores que optimizan los procesos empresariales. Con el lema "Centralized empowering task-force", nuestro enfoque es ofrecer soluciones completas y eficientes para transformar la forma en que las empresas operan. Estamos comprometidos con la implementación de estrategias innovadoras que mejoren el rendimiento y la coordinación en todos los niveles. Descubre más sobre nuestros servicios en ambrose.net.`,
 ];
 
-const fetchPosts = async () => {
+const fetchPosts = async (id) => {
   try {
     const response = await axios.get(
-      "https://jsonplaceholder.typicode.com/posts"
+      `https://jsonplaceholder.typicode.com/posts?userId=${id}`
     );
     return response.data;
   } catch (e) {
@@ -85,4 +85,6 @@ function getRandomNumber(min, max) {
   return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 
-export default fetchUsers;
+module.exports={
+  fetchUsers,fetchPosts
+}

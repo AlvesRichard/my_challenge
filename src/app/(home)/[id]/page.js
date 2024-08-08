@@ -2,29 +2,29 @@
 import Front from "@/components/specific/Front";
 import Body from "@/components/specific/Body";
 import Loading from "../../loading";
-import { Suspense, useEffect, useState } from "react";
-import fetch from "../../../util/fetch";
+import { useEffect, useState } from "react";
+import { usePathname } from 'next/navigation'
 
-export default function Perfil() {
-  const [data, setData] = useState(null);
 
-  useEffect(() => {
-    const fetchData = async () => {
-      const result = await fetch();
-      setData(result);
-    };
+export default function Profile() {
+  const [user, setUser] = useState(null);
+  const pathname = usePathname()
 
-    fetchData();
+  useEffect(() => { 
+      const id = pathname.split("/")[1]
+      const storedUsers = localStorage.getItem("users");
+      const users = JSON.parse(storedUsers)
+      setUser(users.filter(user=>user.id===parseInt(id))[0])
+   
   }, []);
 
-  if (!data) {
+  if (!user) {
     return <Loading />;
   }
-
   return (
     <main className="appContainer">
-      <Front userData={data[0]} />
-      <Body userData={data[0]} />
+      <Front userData={user} />
+      <Body userData={user} />
     </main>
   );
 }
