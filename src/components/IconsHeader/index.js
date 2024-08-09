@@ -13,6 +13,8 @@ import NewPost from "../NewPost";
 import { useDispatch, useSelector } from "react-redux";
 import { addPost } from "@/redux/slices/postsSlice";
 import { usePathname } from 'next/navigation'
+import Image from "next/image";
+import {admin} from "@/util/fetch"
 
 export default function IconsHeader() {
   const posts = useSelector((state) => state.posts.posts);
@@ -59,7 +61,14 @@ export default function IconsHeader() {
       <IoMdNotificationsOutline className="colorIcons cursorPointer" title="Notificaciones" />
       <TiMessage className="colorIcons cursorPointer" title="Casillero de mensajes"/>
       <div className="UserIcons">
-        <FaRegCircle />
+        <Image
+        alt={admin.name}
+        src={admin.photo}
+        className="pictureHeader cursorPointer"
+          onClick={showSettings}
+          width={30}
+        height={30}
+        />
         <MdKeyboardArrowDown
           className="colorIcons cursorPointer"
           title="Mostrar opciones"

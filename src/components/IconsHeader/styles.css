@@ -19,4 +19,10 @@
   text-decoration: none;
 }
 
+.pictureHeader{
+  border-radius: 50%; 
+  display: block;
+  border:3px solid #072461;
+}
+
 

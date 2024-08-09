@@ -11,6 +11,7 @@
     border-radius: 8px;
     padding: 8px;
     background-color: white;
+    z-index: 10001;
 }
 .settingsCosa{
     margin: 5px 0;
