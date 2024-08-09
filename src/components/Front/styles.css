@@ -14,6 +14,7 @@
 }
 
 .portadaImage {
+  object-fit: cover;
   width: 100%;
   height: 100%;
 }
@@ -76,4 +77,62 @@
   font-weight: 400;
   line-height: 16px;
   font-size: 14px;
+}
+
+@media (max-width: 1280px) {
+  .stats {
+    left: 10%;
+    line-height: 14px;
+    font-size: 12px;
+}
+.followButton {
+  padding: 8px 14px;
+}
+}
+@media (max-width: 1024px) {
+
+  .profileContent {
+    left: 17%;
+}
+.userName {
+  font-size: 26px;
+}
+
+.followButton {
+  padding: 7px 12px;
+  font-size: 10px;
+}
+.stats {
+  left: 13%;
+}
+}
+
+@media (max-width: 820px) {
+  .stats {
+      left: 16%;
+  }
+}
+@media (max-width: 540px) {
+  .stats {
+      left: 22%;
+  }
+}
+@media (max-width: 430px) {
+  .profilePicture {
+    width: 100px;
+    height: 100px;
+}
+.profileContent {
+  top: 64%;
+  left: 6%;
+}
+.userName {
+  font-size: 23px;
+}
+.followButton {
+  padding: 7px 9px;
+}
+.coverContainer {
+  height: 300px;
+}
 }

@@ -59,3 +59,13 @@
     border-radius: 5px;
     font-size: 15px;
   }
+
+  @media (max-width: 1280px) {
+    .postTitle {
+      font-size: 16px;
+  }
+  .newCommnetInput {
+    font-size: 13px;
+    margin-top: 1%;
+}
+  }

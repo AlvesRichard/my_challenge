@@ -24,7 +24,7 @@ export default function UsersPreview({ title, users }) {
         {users.map((user, index) => {
           if (index < 20) {
             return (
-              <Link key={user.id} href={`/${user.id}`}>
+              <Link key={user.id} href={`/${user.id}`} className="connectionsLink">
                 <Image
                   alt={user.name}
                   src={user.photo}
@@ -41,7 +41,7 @@ export default function UsersPreview({ title, users }) {
         <div className="allConnectionsPicturesContainer">
           {users.map((user, index) => {
             return (
-              <Link key={user.id} href={`/${user.id}`} className="connectionLink ">
+              <Link key={user.id} href={`/${user.id}`} className="profilesLink ">
                 <Image
                   alt={user.name}
                   src={user.photo}

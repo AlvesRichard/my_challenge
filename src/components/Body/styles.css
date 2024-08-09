@@ -1,20 +1,20 @@
-.bodyContainer{
-  flex: 1; 
+.bodyContainer {
+  flex: 1;
   padding: 1rem;
-  background-color: #F2F5F9;
-  border-top: 1px solid #EBEBEB;
+  background-color: #f2f5f9;
+  border-top: 1px solid #ebebeb;
   display: flex;
   flex-direction: row;
   justify-content: center;
   padding: 1% 0;
 }
 
-.infoContainer{
+.infoContainer {
   max-width: 50%;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap:15px;
+  gap: 15px;
 }
 
 .postsListContainer {
@@ -22,19 +22,19 @@
   flex-direction: column;
   background-color: white;
   border-radius: 10px;
-  gap: 15px; 
-  padding: 20px; 
+  gap: 15px;
+  padding: 20px;
   max-width: 35%;
   height: fit-content;
 }
 
-.principalTitlePosts{
+.principalTitlePosts {
   font-size: 35px;
-  color:#001e5d;
+  color: #001e5d;
   font-weight: 600;
 }
 
-.topPosts{
+.topPosts {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -47,4 +47,33 @@
   border-radius: 8px;
   padding: 15px;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+@media (max-width: 1280px) {
+  .principalTitlePosts {
+    font-size: 30px;
+  }
+  .postsListContainer {
+    max-width: 40%;
+  }
+}
+@media (max-width: 540px) {
+  .bodyContainer {
+    flex-direction: column;
+    justify-content: center;
+    gap: 10px;
+  }
+  .infoContainer {
+    max-width: 100%;
+  }
+
+  .postsListContainer {
+    max-width: 100%;
+    margin: 15%;
+  }
+}
+@media (max-width: 430px) {
+  .postsListContainer {
+      margin: 5%;
+  }
 }

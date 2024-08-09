@@ -6,7 +6,7 @@ import Link from "next/link";
 export default function Header() {
   return (
     <section className="headerContainer">
-      <Link className="headerItem" href={"/"}>
+      <Link className="headerItem headerTitle" href={"/"}>
         My <strong>Challenge</strong>
       </Link>
       <div className="headerItem">

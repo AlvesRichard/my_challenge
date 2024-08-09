@@ -26,6 +26,7 @@ export default function Front({ userData, onFollowToggle }) {
           className="portadaImage"
           layout="fill"
           objectFit="cover"
+          priority 
         />
       </div>
       <div className="profileContent">

@@ -6,6 +6,11 @@ import EditProfileForm from "../EditUser/index";
 export default function Settings({ showSettings }) {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
+  const handleClose=()=>{
+    showSettings()
+    setIsModalOpen(false)
+  }
+
   return (
     <li className="settingsContainer">
       <p
@@ -14,7 +19,7 @@ export default function Settings({ showSettings }) {
       >
         Editar
       </p>
-      <Modal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)}>
+      <Modal isOpen={isModalOpen} showSettings={showSettings} onClose={handleClose}>
         <EditProfileForm showSettings={showSettings}onClose={() => setIsModalOpen(false)} />
       </Modal>
     </li>

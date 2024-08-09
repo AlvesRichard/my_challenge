@@ -63,3 +63,25 @@
   padding-bottom: 1%;
   padding-left: 1%;
 }
+
+@media (max-width: 1024px) {
+  .inputSearchContainer {
+    width: 70%;
+}
+}
+@media (max-width: 540px) {
+
+  .userNameSearch {
+    font-size: 11px;
+}
+.pictureSearch {
+  width: 30px;
+  height: 30px;
+}
+}
+
+@media (max-width: 430px) {
+  .userNameSearch {
+      font-size: 7px;
+  }
+}

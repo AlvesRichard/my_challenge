@@ -25,4 +25,25 @@
   border:3px solid #072461;
 }
 
+@media (max-width: 1024px) {
+  .iconsContainer {
+    width: 80%;
+}
+}
 
+@media (max-width: 540px) {
+  .iconsContainer {
+    width: 80%;
+}
+.pictureHeader{
+  width: 20px;
+  height: 20px;
+  border: 2px solid #072461;
+}
+.colorIcons {
+  font-size: 15px;
+}
+.iconsContainer {
+  width: 100%;
+}
+}

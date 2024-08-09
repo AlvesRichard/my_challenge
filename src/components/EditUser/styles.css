@@ -88,3 +88,29 @@
 input[type="file"] {
   margin-top: 10px;
 }
+
+@media (max-width: 540px) {
+  .editContainer h2{
+    font-size: 19px;
+  }
+  .itemEdit input {
+    font-size: 12px;
+    padding: 4px;
+}
+.buttonEdit {
+  margin-top: 10px;
+}
+.itemEdit {
+  font-size: 13px;
+}
+.textareaEdit textarea {
+  font-size: 12px;
+}
+}
+@media (max-width: 430px) {
+
+  .fromEdit {
+    flex-wrap: nowrap;
+    flex-direction: column;
+  }
+}
