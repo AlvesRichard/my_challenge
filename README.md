@@ -1,36 +1,20 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+Tomé como base el siguiente diseño: https://www.awwwards.com/inspiration/user-profile-time-republik, haciendo algunas modificaciones para el challenge. Las modificaciones incluyeron la adición de datos personales, publicaciones, comentarios y footer, y la eliminación de las secciones "Timebank" e "Invite your friends".
 
-## Getting Started
+Añadí un nuevo apartado al inicio del proyecto para seleccionar los usuarios, junto con un botón para eliminar o generar los datos guardados. Utilicé la API pública https://jsonplaceholder.typicode.com/ para obtener datos de usuarios. Mi idea era usar también la API pública de Random User, pero me encontré con el inconveniente de que mi antivirus la bloqueaba. Por lo tanto, utilicé JSONPlaceholder, añadiendo los datos que me faltaban, como las fotos de perfil, foto de portada y biografía. Esta API pública no tiene relación con usuarios y publicaciones, así que creé una relación entre los usuarios existentes y las publicaciones junto con los comentarios. Para mantener la persistencia de datos, utilicé localStorage con el manejo de datos de Redux.
+El usuario principal es uno llamado Admin.
 
-First, run the development server:
+Funcionalidades:
+    - Búsqueda de Usuarios: Se puede buscar a los usuarios utilizando el buscador en el header.
+    - Crear Publicación: El admin puede crear publicaciones nuevas como si fuese el usuario en concreto.
+    - Crear Comentario: El admin puede crear comentarios nuevos con su nombre.
+    - Editar Perfil: Es posible editar la información del usuario.
+    - Seguir Usuario: El admin puede seguir a los usuarios.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+Para editar la información del usuario, se debe acceder al menú desplegable que se encuentra haciendo clic en la flecha o en el ícono de usuario en la parte superior derecha.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Instalación
+    1- Clona el repositorio.
+    2- Ingresa a la carpeta del proyecto.
+    3- Ejecuta npm install para instalar las dependencias.
+    4- Para iniciar el proyecto, ejecuta npm run dev.
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
