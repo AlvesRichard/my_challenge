@@ -1,0 +1,90 @@
+.editContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 100%;
+}
+
+.fromEdit {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: space-between;
+}
+
+.itemEdit {
+  flex: 1 1 calc(50% - 10px);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: left;
+  color: inherit;
+  border: 1px solid #eee;
+  border-radius: 4px;
+  padding: 1%;
+  box-sizing: border-box;
+  color: #001e5d;
+  font-weight: 600;
+  font-size: 16px;
+}
+.itemEdit input {
+  font-size: 14px;
+  width: 100%;
+  padding: 8px;
+  box-sizing: border-box;
+}
+
+.textareaEdit {
+  flex: 1 1 100%;
+  text-align: center;
+  color: inherit;
+  border: 1px solid #eee;
+  border-radius: 4px;
+  padding: 1%;
+  box-sizing: border-box;
+  color: #001e5d;
+  font-weight: 600;
+  font-size: 16px;
+}
+
+.textareaEdit textarea {
+  width: 100%;
+  padding: 8px;
+  font-size: 14px;
+  box-sizing: border-box;
+  min-height: 100px;
+}
+
+.buttonEditContainer {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.buttonEdit {
+  padding: 10px;
+  background-color: #8b95ee;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-top: 20px;
+}
+
+.buttonEdit:hover {
+  background-color: #6f7be5;
+}
+
+.editImageContainer {
+  position: relative;
+  width: 100px;
+  height: 100px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+input[type="file"] {
+  margin-top: 10px;
+}

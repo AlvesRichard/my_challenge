@@ -12,6 +12,8 @@ export default function Front({ userData, onFollowToggle }) {
 
   const handleClick = () => {
     setIsFollow(!isFollow);
+    const event = new CustomEvent("profileUpdated");
+    window.dispatchEvent(event);
     onFollowToggle();
   };
 
@@ -47,7 +49,7 @@ export default function Front({ userData, onFollowToggle }) {
         </div>
         <div className="stats">
           <span className="statItem">
-            <strong>20</strong> Publicaciones
+            <strong>{userData.posts.length}</strong> Publicaciones
           </span>
           <span className="statItem">
             <strong>{userData.followers.length}</strong> Seguidores

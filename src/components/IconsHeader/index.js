@@ -47,6 +47,8 @@ export default function IconsHeader() {
 
     localStorage.setItem("users", JSON.stringify(updatedUsers));
   };
+
+
   return (
     <div className="iconsContainer">
       <BsPlusSquareFill
@@ -75,7 +77,7 @@ export default function IconsHeader() {
           onClick={showSettings}
         />
       </div>
-      {isActive ? <Settings /> : null}
+      {isActive ? <Settings showSettings={showSettings}/> : null}
       <Modal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)}>
         <NewPost onSubmit={handleNewPost} />
       </Modal>

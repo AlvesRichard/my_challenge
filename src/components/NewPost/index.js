@@ -8,6 +8,8 @@ export default function NewPost({ onSubmit }) {
   const handleSubmit = (e) => {
     e.preventDefault();
     onSubmit({ title, body });
+    const event = new CustomEvent("profileUpdated");
+    window.dispatchEvent(event);
     setTitle("");
     setBody("");
   };

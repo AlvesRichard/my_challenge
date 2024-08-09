@@ -11,13 +11,25 @@ export default function Profile() {
   const [user, setUser] = useState(null);
   const pathname = usePathname()
 
-  useEffect(() => { 
-      const id = pathname.split("/")[1]
-      const storedUsers = localStorage.getItem("users");
-      const users = JSON.parse(storedUsers)
-      setUser(users.filter(user=>user.id===parseInt(id))[0])
-   
-  }, []);
+  const fetchUserData = () => {
+    const id = pathname.split("/")[1];
+    const storedUsers = localStorage.getItem("users");
+    const users = JSON.parse(storedUsers);
+    const foundUser = users.find(user => user.id === parseInt(id));
+    setUser(foundUser);
+  };
+
+  useEffect(() => {
+    fetchUserData(); 
+    const handleStorageChange = () => {
+      fetchUserData(); 
+    };
+    window.addEventListener('profileUpdated', handleStorageChange);
+    return () => {
+      window.removeEventListener('profileUpdated', handleStorageChange);
+    };
+  }, [pathname]);
+
 
   if (!user) {
     return <Loading />;
