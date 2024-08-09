@@ -1,10 +1,4 @@
-.postContainer {
-    background-color: white;
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    padding: 15px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-  }
+
   
   .postHeader {
     margin-bottom: 10px;
@@ -49,4 +43,19 @@
     flex-direction: row;
     align-items: center;
     gap: 5px;
+  }
+
+  .noYetComments{
+    color: #001e5d;
+    font-size: 12px;
+    text-align: left;
+    margin-bottom: 1%;
+  }
+
+  .newCommnetInput{
+    width: 100%;
+    padding: 1%;
+    border: 1px solid grey;
+    border-radius: 5px;
+    font-size: 15px;
   }

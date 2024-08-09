@@ -24,7 +24,7 @@ export default function Modal({ isOpen, onClose, children }) {
       <div className="modalContainer">
         <div className="modalContent">
           <div className="modalClose">
-            <IoClose onClick={onClose} style={{fontSize:25}}/>
+            <IoClose onClick={onClose} style={{fontSize:25}} className="cursorPointer"/>
           </div>
           {children}
         </div>

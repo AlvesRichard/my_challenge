@@ -5,7 +5,7 @@ import Link from "next/link";
 
 export default function Comment({ comment }) {
   return (
-    <div className="commentContainer">
+    <>
       <Link className="commentUserInfo" href={`/${comment.userId}`}>
         <Image
           alt={comment.userName}
@@ -19,6 +19,6 @@ export default function Comment({ comment }) {
       <div className="commentBody">
         <p>{comment.body}</p>
       </div>
-    </div>
+    </>
   );
 }

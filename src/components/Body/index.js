@@ -5,7 +5,6 @@ import { BsPlusSquareFill } from "react-icons/bs";
 import "./styles.css";
 import { useEffect, useState } from "react";
 import Post from "../Post";
-import { fetchPosts } from "../../util/fetch";
 import Modal from "../Modal";
 import NewPost from "../NewPost";
 import { useDispatch, useSelector } from "react-redux";
@@ -28,8 +27,7 @@ export default function Body({ userData }) {
       if (userPosts && userPosts.length > 0) {
         dispatch(setPosts(userPosts));
       } else {
-        const fetchedPosts = await fetchPosts(userData.id);
-        dispatch(setPosts(fetchedPosts.reverse()));
+        alert("Error al cargar las publicaciones.");
       }
     };
 
@@ -37,7 +35,7 @@ export default function Body({ userData }) {
   }, [dispatch, userData.id]);
 
   const handleNewPost = (newPost) => {
-    const postUpdated = { id: posts.length + 1, ...newPost };
+    const postUpdated = { id: posts[0].id + 1, userId: "#", ...newPost };
     dispatch(addPost(postUpdated));
     updateLocalStorage(postUpdated);
     setIsModalOpen(false);
@@ -77,7 +75,11 @@ export default function Body({ userData }) {
         </div>
         {posts ? (
           posts.map((post) => {
-            return <Post key={post.id} post={post} />;
+            return (
+              <div key={post.id + post.title} className="postContainer">
+                <Post post={post} />
+              </div>
+            );
           })
         ) : (
           <h1>Loading</h1>

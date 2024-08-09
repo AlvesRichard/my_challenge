@@ -1,7 +1,7 @@
 "use client";
 import Loading from "../loading";
 import { useEffect, useState } from "react";
-import {fetchUsers} from "../../util/fetch";
+import {fetchAllData} from "../../util/fetch";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -15,7 +15,7 @@ export default function Home() {
       if (storedUsers) {
         setUsers(JSON.parse(storedUsers));
       } else {
-        fetchUsers().then((fetchedUsers) => {
+        fetchAllData().then((fetchedUsers) => {
           localStorage.setItem("users", JSON.stringify(fetchedUsers));
           setUsers(fetchedUsers);
         });
@@ -31,7 +31,7 @@ export default function Home() {
       setInStorage(false);
       setUsers([]);
     } else {
-      fetchUsers().then((fetchedUsers) => {
+      fetchAllData().then((fetchedUsers) => {
         localStorage.setItem("users", JSON.stringify(fetchedUsers));
         setUsers(fetchedUsers);
       });

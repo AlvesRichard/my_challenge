@@ -1,5 +1,10 @@
 import axios from "axios";
-import { useEffect, useState } from 'react';
+
+const admin = {
+  id: "#",
+  name: "Admin",
+  photo: "/perfiles/admin.jpg",
+};
 
 let arrayAboutMe = [
   `Soy Leanne Graham, una apasionada profesional de Romaguera-Crona, donde implemento nuestra estrategia de "harness real-time e-markets" para crear redes neuronales cliente-servidor en múltiples capas. Me dedico a transformar la forma en que los mercados electrónicos funcionan, optimizando cada proyecto para alcanzar la máxima eficiencia. Vivo en la tranquila ciudad de Gwenborough y disfruto aplicando mis conocimientos para resolver desafíos complejos, siempre con un enfoque en la innovación y la mejora continua.`,
@@ -14,8 +19,49 @@ let arrayAboutMe = [
   `En Hoeger LLC, me especializo en modelos integrales y empoderadores que optimizan los procesos empresariales. Con el lema "Centralized empowering task-force", nuestro enfoque es ofrecer soluciones completas y eficientes para transformar la forma en que las empresas operan. Estamos comprometidos con la implementación de estrategias innovadoras que mejoren el rendimiento y la coordinación en todos los niveles. Descubre más sobre nuestros servicios en ambrose.net.`,
 ];
 
+const fetchAllData = async () => {
+  try {
+    const allUsers = await fetchUsers();
 
+    const usersWithAll = await Promise.all(
+      allUsers.map(async (user) => {
+        const { data: posts } = await axios.get(
+          `https://jsonplaceholder.typicode.com/posts?userId=${user.id}`
+        );
+        const reversedPosts = posts.reverse();
 
+        const postsWithComments = await Promise.all(
+          reversedPosts.map(async (post) => {
+            const { data: comments } = await axios.get(
+              `https://jsonplaceholder.typicode.com/posts/${post.id}/comments`
+            );
+
+            const commentsWithUserId = comments.map((comment) => {
+              const userIdRandom = getRandomNumber(1, 10);
+              const userRandom = allUsers.find((user) => user.id === userIdRandom);
+            
+              return {
+                ...comment,
+                userId: userIdRandom,
+                userPhoto: userRandom.photo,
+                userName: userRandom.name,
+              };
+            });
+
+            return { ...post, comments: commentsWithUserId };
+          })
+        );
+
+        return { ...user, posts: postsWithComments };
+      })
+    );
+
+    return usersWithAll;
+  } catch (error) {
+    console.error("Error fetching data:", error);
+    throw error;
+  }
+};
 const fetchUsers = async () => {
   try {
     const responseUsers = await axios.get(
@@ -71,33 +117,8 @@ function getRandomNumber(min, max) {
   return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 
-const fetchPosts = async (id) => {
-  try {
-    const response = await axios.get(
-      `https://jsonplaceholder.typicode.com/posts?userId=${id}`
-    );
-    return response.data;
-  } catch (e) {
-    console.log(e);
-    return null;
-  }
-};
 
-const fetchComments = async (id) => {
-  try {
-    const response = await axios.get(
-      `https://jsonplaceholder.typicode.com/posts/${id}/comments`
-    );
-    const commentsWithUser = response.data.map(comment=>{
-      return {...comment,userId:getRandomNumber(1, 10)}
-    })
-    return commentsWithUser;
-  } catch (e) {
-    console.log(e);
-    return null;
-  }
+module.exports = {
+  fetchAllData,
+  admin,
 };
-
-module.exports={
-  fetchUsers,fetchPosts,fetchComments,getRandomNumber
-}

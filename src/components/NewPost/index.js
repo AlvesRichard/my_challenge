@@ -34,7 +34,7 @@ export default function NewPost({ onSubmit }) {
         rows="5"
         required
       />
-      <button type="submit" className="newPostButton">
+      <button type="submit" className="newPostButton cursorPointer">
         Crear
       </button>
     </form>

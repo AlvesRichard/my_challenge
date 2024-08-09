@@ -4,12 +4,8 @@ import Body from "@/components/Body";
 import Loading from "../../loading";
 import { useEffect, useState } from "react";
 import { usePathname } from 'next/navigation'
+import {admin} from "@/util/fetch"
 
-const admin = {
-  id: "#",
-  name: "Admin",
-  photo: "/perfiles/admin.jpg",
-};
 
 export default function Profile() {
   const [user, setUser] = useState(null);
